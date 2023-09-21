@@ -9,25 +9,26 @@
  */
 int print_rot13_string(char *str)
 {
-    int printed_chars = 0;
+	int printed_chars = 0;
 
-    while (*str)
-    {
-        char c = *str;
-        if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
-        {
-            char base = (c >= 'a') ? 'a' : 'A';
-            char rotated = (((c - base) + 13) % 26) + base;
-            putchar(rotated);
-            printed_chars++;
-        }
-        else
-        {
-            putchar(c);
-            printed_chars++;
-        }
-        str++;
-    }
+	while (*str)
+{
+	char c = *str;
 
-    return printed_chars;
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+{
+	char base = (c >= 'a') ? 'a' : 'A';
+	char rotated = (((c - base) + 13) % 26) + base;
+		putchar(rotated);
+		printed_chars++;
+}
+	else
+{
+	putchar(c);
+	printed_chars++;
+}
+	str++;
+
+	}
+	return (printed_chars);
 }

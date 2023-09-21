@@ -30,4 +30,6 @@ int dcu(va_list arg);
 int print_dig_u(long int k, long int n);
 int bc(va_list arg);
 int print_binary(long int k, long int n);
+int print_rot13_string(char *c);
+
 #endif /* MAIN_H */

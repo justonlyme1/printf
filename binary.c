@@ -1,6 +1,5 @@
 #include <stdarg.h>
 #include <stdio.h>
-#include "holberton.h"
 
 /**
  * binary - print a binary number
@@ -8,6 +7,7 @@
  *
  * Return: no return
  */
+
 int binary(va_list va)
 {
 	unsigned int c;
@@ -18,7 +18,7 @@ int binary(va_list va)
 	i = 0;
 	if (c == 0)
 	{
-		_putchar('0');
+		putchar('0');
 		return (1);
 	}
 	while (c > 0)
@@ -28,6 +28,6 @@ int binary(va_list va)
 		i++;
 	}
 	for (j = i - 1; j >= 0; j--)
-		_putchar(arr[j] + '0');
+		putchar(arr[j] + '0');
 	return (i);
 }

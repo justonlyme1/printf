@@ -1,41 +1,61 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-/* Include necessary header files */
-#include <stdarg.h>  // For va_list and va_start
-#include <stdlib.h>  // For malloc
-#include <unistd.h>  // For write
+/* header files */
+#include <stdarg.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 /**
  * struct character_print - print data
- * @c: character specifier.
- * @f_pr: function pointer for print handler.
+ * @c: character.
+ * @f_pr: function pointer
  */
 typedef struct character_print
 {
-    char *c;
-    int (*f_pr)(va_list arg, char *buffer, unsigned int ibuf);
+	char *c;
+	int (*f_pr)(va_list arg);
 } print_d;
 
-/* Function prototypes for print handlers */
+/* function prototypes */
 int _printf(const char *format, ...);
 int _putchar(char c);
-int pc(va_list arg, char *buffer, unsigned int ibuf);
-int pp(va_list arg, char *buffer, unsigned int ibuf);
-int ps(va_list arg, char *buffer, unsigned int ibuf);
+int pc(va_list arg);
+int ps(va_list arg);
+int pp(va_list arg __attribute((unused)));
 
-/* More function prototypes for print handlers */
-int print_dig(va_list arg, char *buffer, unsigned int ibuf);
-int print_dig_u(va_list arg, char *buffer, unsigned int ibuf);
-int print_binary(va_list arg, char *buffer, unsigned int ibuf);
-int print_rot13_string(va_list arg, char *buffer, unsigned int ibuf);
-int print_hex_lower(unsigned int n);
+int dc(va_list arg);
+int print_dig(long int k, long int n);
+int dcu(va_list arg);
+int print_dig_u(long int k, long int n);
+int bc(va_list arg);
+int print_binary(long int k, long int n);
+int print_rot13_string(char *c);
 
+/* Add these function prototypes to your main.h file */
 
-/* Function prototypes for utility functions */
-int get_print_func(const char *format, unsigned int i);
-int ev_print_func(const char *format, unsigned int i);
-void handl_buf(char *buffer, char c, unsigned int ibuf);
-void print_buf(char *buffer, unsigned int ibuf);
+/* Function prototypes for print handlers in functions1.c */
+int print_unsigned(va_list types, char buffer[], int flags, int width, int precision, int size);
+int print_octal(va_list types, char buffer[], int flags, int width, int precision, int size);
+int print_hexadecimal(va_list types, char buffer[], int flags, int width, int precision, int size);
+int print_hexa_upper(va_list types, char buffer[], int flags, int width, int precision, int size);
+int print_hexa(va_list types, char map_to[], char buffer[], int flags, char flag_ch, int width, int precision, int size);
 
+/* Function prototypes for print handlers in functions2.c */
+int print_pointer(va_list types, char buffer[], int flags, int width, int precision, int size);
+int print_non_printable(va_list types, char buffer[], int flags, int width, int precision, int size);
+int print_reverse(va_list types, char buffer[], int flags, int width, int precision, int size);
+int print_rot13string(va_list types, char buffer[], int flags, int width, int precision, int size);
+int get_flags(const char *format, int *i);
+int get_precision(const char *format, int *i, va_list list);
+int get_size(const char *format, int *i);
+int get_width(const char *format, int *i, va_list list);
+int handle_print(const char *fmt, int *ind, va_list list, char buffer[], int flags, int width, int precision, int size);
+int convert_size_unsgnd(int num, int size);
+
+int write_unsgnd(int is_negative, int ind, char buffer[], int flags, int width, int precision, int size);
+
+int another_function(va_list arg);
+int yet_another_function(int arg1, char *arg2);
 #endif /* MAIN_H */
+
